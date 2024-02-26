@@ -11,8 +11,8 @@ Moderada: Gera uma senha segura, misturando letras e números de forma mais segu
 Difícil: Gera uma senha altamente segura com letras e números aleatórios, ideal para maior proteção.
 
 Personalização das Senhas: Após a geração, o usuário tem a opção de salvar as senhas em um arquivo de texto chamado "Senha_gerada.txt". Além disso, é possível adicionar títulos às senhas, facilitando a identificação do serviço ou aplicativo associado a cada senha.
-Ex: Instagram: 52643154
-    
+Ex: 
+    Instagram: 52643154
     Gmail: (pode/87
     
 Como Usar:
