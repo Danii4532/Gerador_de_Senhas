@@ -4,9 +4,12 @@ Este é um programa simples em Python que gera senhas aleatórias de forma Funci
 Funcionalidades Principais:
 Diferentes Níveis de Complexidade: O programa oferece três opções para gerar senhas, cada uma com um nível diferente de complexidade:
 
-Fácil: Gera uma senha composta por letras e números fáceis de lembrar.
+Fácil: Gera uma senha composta por letras e números fáceis de lembrar. 
+
 Moderada: Gera uma senha segura, misturando letras e números de forma mais segura.
+
 Difícil: Gera uma senha altamente segura com letras e números aleatórios, ideal para maior proteção.
+
 Personalização das Senhas: Após a geração, o usuário tem a opção de salvar as senhas em um arquivo de texto chamado "Senha_gerada.txt". Além disso, é possível adicionar títulos às senhas, facilitando a identificação do serviço ou aplicativo associado a cada senha.
 Ex: Instagram: 52643154
     Gmail: (pode/87
