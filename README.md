@@ -25,10 +25,15 @@ Ao finalizar, selecione a opção "sair" para encerrar o programa.
 
 Como Executar o Programa:
 Clone este repositório para o seu computador:
+
 git clone https://github.com/seu-usuario/nome-do-repositorio.git.
+
 Navegue até o diretório do projeto:
+
 cd nome-do-repositorio.
+
 Execute o script Python:
+
 python gerador_senhas.py
 Aproveite.
 Agradeço :)
