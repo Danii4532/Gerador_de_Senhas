@@ -1,13 +1,28 @@
-Este é um codigo para gerar senhas, ele é executado no cmd, mas ainda assim, é bem intuitivo e fácil de ser usado, com instruções simples e funcionais.
-O código possui funções como:
-Gerar senhas que contenham: apenas números, apenas letras, e números e letras.
-A função Números e letras também possui alguns atributos como: 
-Fácil: gera uma senha com letras e numeros fáceis de serem lembrados.
-Moderada: gera uma senha com letras e números mais segura e ainda assim fácil de se lembrar.
-Difícil: Gera uma senha com letras e números aleatórios, que podem ser mais diíceis para se decorar, mas com alto nível de segurança.
-O usuário pode gerar quantas senhas ele quiser e ao terminar, o programa oferece a opção para salvar, onde as senhas geradas serão salvas em um arquivo chamado "Senha_gerada.txt"
-o usuário poderá escolher o local do computador para salvar, além do que, cada vez que o usuário salvar uma senha, ele pode adicionar um titulo a ela, que tambem será salvo dentro do txt.
-Ex: Instagram: 21564897
-    Gmail: (lona2100
-Isso ajudará a pessoa a saber em qual programa ela usará a senha gerada.
-Quando a pessoa terminar de usar o programa, ela escolhe a opção sair, então o programa encerra.
+Gerador de Senhas Aleatórias
+Este é um programa simples em Python que gera senhas aleatórias de forma Funcional e fácil de usar, é executado diretamente no prompt de comando (cmd) do Windows.
+
+Funcionalidades Principais:
+Diferentes Níveis de Complexidade: O programa oferece três opções para gerar senhas, cada uma com um nível diferente de complexidade:
+
+Fácil: Gera uma senha composta por letras e números fáceis de lembrar.
+Moderada: Gera uma senha segura, misturando letras e números de forma mais segura.
+Difícil: Gera uma senha altamente segura com letras e números aleatórios, ideal para maior proteção.
+Personalização das Senhas: Após a geração, o usuário tem a opção de salvar as senhas em um arquivo de texto chamado "Senha_gerada.txt". Além disso, é possível adicionar títulos às senhas, facilitando a identificação do serviço ou aplicativo associado a cada senha.
+Ex: Instagram: 52643154
+    Gmail: (pode/87
+Como Usar:
+Execute o programa no prompt de comando do Windows.
+Escolha o tamanho da senha desejada.
+Escolha o tipo de senha: letras, numero ou ambos.
+Após a geração da senha, escolha se deseja salvá-la, Se sim, adicione um título para identificação se desejar.
+Ao finalizar, selecione a opção "sair" para encerrar o programa.
+
+Como Executar o Programa:
+Clone este repositório para o seu computador:
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
+Navegue até o diretório do projeto:
+cd nome-do-repositorio
+Execute o script Python:
+python gerador_senhas.py
+Aproveite
+Agradeço :)
