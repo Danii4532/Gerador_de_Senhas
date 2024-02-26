@@ -35,5 +35,7 @@ cd nome-do-repositorio.
 Execute o script Python:
 
 python gerador_senhas.py
+
 Aproveite.
+
 Agradeço :)
