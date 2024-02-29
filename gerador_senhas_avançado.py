@@ -1,7 +1,6 @@
 import tkinter.filedialog
 from tkinter import filedialog
 import random
-#criar um gerador de senha bonito, totalmente funcional
 #dando ao usuario opções para criar a senha
 
 
@@ -130,8 +129,7 @@ def Letras(num):
 loop = 1
 
 def Salvar(senha):
-    #oferecer opções para o usuario salvar a senha, tera opções de salvar primeiro em um txt, e talvez em um xlsx
-    #oferecer opções avançadas, onde o usuario pode criar mais de 1 senha de uma vez e rotular elas, ex: senha 1 para facebook, etc
+    #oferecer opções para o usuario salvar a senha, tera opção de salvar em um txt
     password = ''
     janela = tkinter.Tk()
     janela.withdraw()
