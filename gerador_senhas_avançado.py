@@ -1,16 +1,19 @@
 import tkinter.filedialog
 from tkinter import filedialog
 import random
+import locale
+#criar um gerador de senha bonito, totalmente funcional
 #dando ao usuario opções para criar a senha
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 
 def Letras_e_numeros(num):
     tamanho = num
     senha = ''
     numeros = [str(i) for i in range(10)]
-    dificuldade = input('Escolha um nivel de dificuldade da senha: \n1 - Fácil \n2 - Moderada \n3 - Difícil')
+    dificuldade = input('Escolha um nivel de dificuldade da senha: \n1 - Fácil \n2 - Moderada \n3 - Difícil\n:')
     if dificuldade == '1':
-        with open('database.txt', 'r') as arquivo:
+        with open('database.txt', 'r', encoding='utf-8') as arquivo:
             palavras = [palavra for palavra in arquivo]
             escolha = random.choice(palavras)
             tamanho = int(tamanho)
@@ -41,7 +44,7 @@ def Letras_e_numeros(num):
         if int(tamanho) == 1:
             senha+=random.choice(pontuacao)
             exit()
-        with open('database.txt', 'r') as arquivo:
+        with open('database.txt', 'r', encoding='utf-8') as arquivo:
             palavras = [palavra for palavra in arquivo]
             escolha = random.choice(palavras)
             tamanho = int(tamanho)
@@ -95,7 +98,7 @@ def Numeros(num):
     for cada in range(int(num)):
         escolha = random.choice(numeros)
         senha+=str(escolha)
-    print(senha)
+    
     print(f'Senha gerada: {senha}')
     print('Deseja salvar a senha gerada: \n1 - Sim \n2 - Não')
     opcao = input('\n:')
@@ -103,14 +106,20 @@ def Numeros(num):
         Salvar(senha)
     elif opcao == '2':
         Novamente()
+        
 def Novamente():
-
-    continuar = input('Escolha \n1 - Continuar \n2 - Sair')
-    if continuar == '1':
-        loop = 1
-    else:
-        print('Programa Finalizado')
-        exit()
+    loop = True
+    while loop:
+        continuar = input('Escolha \n1 - Continuar \n2 - Sair\n:')
+        if continuar == '1':
+            loop = False
+            Principal()
+        elif continuar == '2':
+            print('Programa Finalizado')
+            exit()
+        else:
+            print('Opção Inválida')
+        
 def Letras(num):
     senha = ''
     letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
@@ -129,10 +138,10 @@ def Letras(num):
 loop = 1
 
 def Salvar(senha):
-    #oferecer opções para o usuario salvar a senha, tera opção de salvar em um txt
+    #oferecer opções para o usuario salvar a senha, tera opções de salvar primeiro em um txt, e talvez em um xlsx
+    #oferecer opções avançadas, onde o usuario pode criar mais de 1 senha de uma vez e rotular elas, ex: senha 1 para facebook, etc
     password = ''
     janela = tkinter.Tk()
-    janela.withdraw()
     diretorio = filedialog.askdirectory()
     caminho = diretorio+'/Senha_gerada.txt'
     print(caminho)
@@ -153,37 +162,41 @@ def Salvar(senha):
     print('Senhas salvas')
 
 def Principal():
-    while loop:
-        tamanho = input('Digite quantos caracteres sua senha terá: ')
-        if tamanho.isdigit():
-            pass
-
-        elif tamanho == ' ':
-            print('Insira apenas números')
+    loop_senha = True
+    print('A senha precisa conter ao menos 4 caracteres')
+    while loop_senha:
+        tamanho = int(input('Digite quantos caracteres sua senha terá: '))
+        if tamanho < 4 or tamanho == ' ':
+            print('Valor inserido inválido')
+            print('A senha precisa ter no mínimo 4 caracteres')
             Novamente()
+
+        elif tamanho >= 4 and tamanho != ' ':
+            print('''
+            Escolha uma opção de senha
+            1 - Letras e numeros
+            2 - Apenas de números
+            3 - Apenas letras
+            ''')
+            op = input(': ')
+            if op == '1':
+                Letras_e_numeros(tamanho)
+
+            elif op == '2':
+                Numeros(tamanho)
+
+            elif op == '3':
+                Letras(tamanho)
+
+            else:
+                print('Opção Inválida, insira apenas os números disponíveis')
+                Novamente()
+            loop = False
 
         else:
             print('Insira apenas números')
             Novamente()
 
-        print('''
-        Escolha uma opção de senha
-        1 - Letras e numeros
-        2 - Apenas de números
-        3 - Apenas letras
-        ''')
-        op = input(': ')
-        if op == '1':
-            Letras_e_numeros(tamanho)
-
-        elif op == '2':
-            Numeros(tamanho)
-
-        elif op == '3':
-            Letras(tamanho)
-
-        else:
-            print('Opção Inválida, insira apenas os números disponíveis')
-            Novamente()
+        
 
 Principal()
