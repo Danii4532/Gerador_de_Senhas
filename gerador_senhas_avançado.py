@@ -1,24 +1,38 @@
 import tkinter.filedialog
 from tkinter import filedialog
 import random
-import locale
-#criar um gerador de senha bonito, totalmente funcional
-#dando ao usuario opções para criar a senha
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+from locale import setlocale, LC_ALL
 
+setlocale(LC_ALL, 'pt_BR.UTF-8')
+    
+#adicionar uma lista com as palavras que serao usadas para gerar as senhas, para caso ocorra de haver algum problema com o txt que contem as palavras
+lista_palavras = ['Amizade', 'Coragem', 'Paciência', 'Honestidade', 'Bondade', 'Maça', 'Banana', 'Laranja', 'Morango', 'Abacaxi', 'Uva', 'Manga', 'Melancia', 'Pera', 'Kiwi', 'Cadeira', 'Mesa', 'Lápis', 'Caneta', 'Livro', 'Relógio', 'Computador', 'Telefone', 'Garrafa', 'Tesoura', 'Mochila', 'Quadro', 'Teclado', 'Monitor', 'Ventilador', 'Caderno', 'Faca', 'Colher', 'Almofada', 'Janela', 'Ana', 'JoÃ£o', 'Maria', 'Pedro', 'Lucas', 'Sofia', 'Matheus', 'Clara', 'Gabriel', 'Laura', 'Bruno', 'Alice', 'Rafael', 'Helena', 'Tiago', 'Julia', 'Leonardo', 'Isabel', 'Carlos', 'Beatriz']
+
+
+def Salvar_senha(senha):
+    loop1 = True
+    while loop1:
+        opcao = input('Deseja salvar a senha gerada: \n1 - Sim \n2 - Não\n:')   
+        if opcao == '1':
+            Salvar(senha)
+            loop1 = False
+        elif opcao == '2':
+            Novamente()
+            loop1 = False
+        else:
+            print('Opção inválida')
+    
 
 def Letras_e_numeros(num):
     tamanho = num
     senha = ''
     numeros = [str(i) for i in range(10)]
     dificuldade = input('Escolha um nivel de dificuldade da senha: \n1 - Fácil \n2 - Moderada \n3 - Difícil\n:')
-    if dificuldade == '1':
-        with open('database.txt', 'r', encoding='utf-8') as arquivo:
-            palavras = [palavra for palavra in arquivo]
-            escolha = random.choice(palavras)
-            tamanho = int(tamanho)
-            senha+=escolha[0:int(tamanho)-1]
-            senha+=random.choice(numeros)
+    if dificuldade == '1':         
+        escolha = random.choice(lista_palavras)
+        tamanho = int(tamanho)
+        senha+=escolha[0:int(tamanho)-1]
+        senha+=random.choice(numeros)
         if senha == tamanho:
             pass
         elif len(senha) < tamanho:
@@ -29,13 +43,8 @@ def Letras_e_numeros(num):
             pass
         else:
             pass
-        print('Senha gerada: ',senha)
-        print('Deseja salvar a senha gerada: \n1 - Sim \n2 - Não')
-        opcao = input('\n:')
-        if opcao == '1':
-            Salvar(senha)
-        elif opcao == '2':
-            Novamente()
+        print(f'Senha gerada: {senha}')
+        Salvar_senha(senha)
 
     elif dificuldade == '2':
         senha = ''
@@ -44,14 +53,13 @@ def Letras_e_numeros(num):
         if int(tamanho) == 1:
             senha+=random.choice(pontuacao)
             exit()
-        with open('database.txt', 'r', encoding='utf-8') as arquivo:
-            palavras = [palavra for palavra in arquivo]
-            escolha = random.choice(palavras)
-            tamanho = int(tamanho)
-            senha+=random.choice(pontuacao)
-            senha+=escolha[0:int(tamanho)-3]
-            senha+=random.choice(numeros)
-            senha+=random.choice(pontuacao)
+    
+        escolha = random.choice(lista_palavras)
+        tamanho = int(tamanho)
+        senha+=random.choice(pontuacao)
+        senha+=escolha[0:int(tamanho)-3]
+        senha+=random.choice(numeros)
+        senha+=random.choice(pontuacao)
         if senha == tamanho:
             print('preenchido')
         elif len(senha) < tamanho:
@@ -63,13 +71,9 @@ def Letras_e_numeros(num):
 
         else:
             pass
-        print(senha)
-        print('Deseja salvar a senha gerada: \n1 - Sim \n2 - Não')
-        opcao = input('\n:')
-        if opcao == '1':
-            Salvar(senha)
-        elif opcao == '2':
-            Novamente()
+        print(f'Senha gerada: {senha}')
+        Salvar_senha(senha)
+
 
 
     elif dificuldade == '3':
@@ -85,12 +89,9 @@ def Letras_e_numeros(num):
                 escolha2 = random.choice(numeros)
                 senha+=escolha2
         print(f'Senha gerada: {senha}')
-        print('Deseja salvar a senha gerada: \n1 - Sim \n2 - Não')
-        opcao = input('\n:')
-        if opcao == '1':
-            Salvar(senha)
-        elif opcao == '2':
-            Novamente()
+        Salvar_senha(senha)
+
+            
 
 def Numeros(num):
     senha = ''
@@ -100,12 +101,8 @@ def Numeros(num):
         senha+=str(escolha)
     
     print(f'Senha gerada: {senha}')
-    print('Deseja salvar a senha gerada: \n1 - Sim \n2 - Não')
-    opcao = input('\n:')
-    if opcao == '1':
-        Salvar(senha)
-    elif opcao == '2':
-        Novamente()
+    Salvar_senha(senha)
+
         
 def Novamente():
     loop = True
@@ -128,12 +125,8 @@ def Letras(num):
         escolha = random.choice(letras)
         senha+=escolha
     print(f'Senha gerada: {senha}')
-    print('Deseja salvar a senha gerada: \n1 - Sim \n2 - Não')
-    opcao = input('\n:')
-    if opcao == '1':
-        Salvar(senha)
-    elif opcao == '2':
-        Novamente()
+    Salvar_senha(senha)
+
 
 loop = 1
 
@@ -165,13 +158,13 @@ def Principal():
     loop_senha = True
     print('A senha precisa conter ao menos 4 caracteres')
     while loop_senha:
-        tamanho = int(input('Digite quantos caracteres sua senha terá: '))
-        if tamanho < 4 or tamanho == ' ':
+        tamanho = input('Digite quantos caracteres sua senha terá: ')
+        if tamanho < '4' or tamanho == ' ':
             print('Valor inserido inválido')
             print('A senha precisa ter no mínimo 4 caracteres')
             Novamente()
 
-        elif tamanho >= 4 and tamanho != ' ':
+        elif tamanho >= '4' and tamanho.isdigit():
             print('''
             Escolha uma opção de senha
             1 - Letras e numeros
